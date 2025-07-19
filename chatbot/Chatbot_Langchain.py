@@ -14,10 +14,9 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_community.tools import DuckDuckGoSearchRun
 
 # In-memory history for the chat session
-from langchain.memory import ChatMessageHistory
+from langchain_community.chat_message_histories import ChatMessageHistory
 
-
-class HueChatbotLangChain:
+class HueChatbot:
     def __init__(self):
         """Initialize the chatbot using LangChain components."""
         load_dotenv()
@@ -45,7 +44,7 @@ class HueChatbotLangChain:
             region="vn",
             language="vi",
             max_results=5,
-        )
+        )   
 
         # c. Prompt Template: The "instruction manual" for the LLM.
         self.prompt = ChatPromptTemplate.from_messages(
@@ -152,5 +151,5 @@ class HueChatbotLangChain:
 # Initialize and start chatbot
 if __name__ == "__main__":
     print("🚀 Khởi động chatbot...")
-    chatbot = HueChatbotLangChain()
+    chatbot = HueChatbot()
     chatbot.start(streaming=False)
